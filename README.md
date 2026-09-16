@@ -1,84 +1,105 @@
 # Experimentation-Analytics-Hotel-Booking-Conversion-Optimization
 End-to-End Experimentation Analytics for Hotel Booking Conversion Optimization using Python, PostgreSQL, SQL and Tableau
-# Experimentation Analytics for Hotel Booking Conversion Optimization
+# A/B Testing Analytics for Hotel Booking Conversion Optimization
 
 ## Project Overview
 
-This project simulates an A/B testing experiment conducted on a hotel booking platform to evaluate whether a new booking experience (Variant B) improves user conversion and revenue compared to the existing experience (Variant A).
+This project simulates a real-world A/B testing experiment conducted on a hotel booking platform to evaluate whether a redesigned booking experience (Variant B) improves conversion rates, booking volume, revenue, and overall funnel performance compared to the existing experience (Variant A).
 
-The project covers the complete analytics workflow:
+The analysis follows a complete experimentation workflow commonly used by Product Analysts, Growth Analysts, and Data Analysts:
 
-- Synthetic dataset generation using Python
-- Data storage and analysis in PostgreSQL
-- Funnel and KPI analysis using SQL
-- Statistical significance testing
-- Interactive dashboards in Tableau
-- Business recommendations based on experiment results
+- Experiment Design
+- SQL-Based KPI Analysis
+- Funnel Analysis
+- Statistical Significance Testing
+- Business Recommendations
+- Tableau Dashboard Reporting
 
 ---
 
 ## Business Problem
 
-A hotel booking platform wants to determine whether a redesigned booking experience improves user behavior and business performance.
+A hotel booking platform launched a new booking experience (Variant B) and wanted to determine whether it improved user behavior and business performance.
 
-The experiment compares:
+The experiment compared:
 
 - Variant A (Control)
 - Variant B (Treatment)
 
-Key success metrics:
+Success was measured using:
 
 - Conversion Rate
 - Booking Volume
 - Revenue
 - Revenue Per User
-- Funnel Performance
+- Funnel Conversion Metrics
 
 ---
 
-## Tech Stack
+## Dataset
 
-- Python
+The project consists of four datasets:
+
+### users.csv
+Contains user information and experiment assignments.
+
+### experiment_assignment.csv
+Maps users to Variant A or Variant B.
+
+### user_events.csv
+Tracks user actions across the booking journey.
+
+### bookings.csv
+Contains completed hotel bookings and revenue generated.
+
+---
+
+## Tools & Technologies
+
 - PostgreSQL
 - SQL
+- Python
 - Tableau
-- Pandas
-- NumPy
-- SciPy
+- Excel
+- GitHub
 
 ---
 
-## Dataset Summary
+## SQL Analysis
 
-| Dataset | Records |
-|----------|---------:|
-| Users | 100,000 |
-| Experiment Assignments | 100,000 |
-| User Events | 156,858 |
-| Bookings | 5,699 |
+Using PostgreSQL, the experiment data was analyzed to measure business performance across both variants.
+
+### Key Questions Answered
+
+1. Which variant achieved a higher conversion rate?
+2. Which variant generated more bookings?
+3. Which variant generated more revenue?
+4. Which variant generated higher revenue per user?
+5. At which funnel stage did users drop off?
+6. Did the treatment improve funnel conversion rates?
 
 ---
 
-## Executive Results
+## Experiment Results
 
-### Conversion Rate
+### Conversion Rate Analysis
 
-| Variant | Conversion Rate |
-|----------|---------:|
-| A | 4.39% |
-| B | 7.00% |
+| Variant | Users | Bookings | Conversion Rate |
+|----------|---------:|---------:|---------:|
+| A | 49,962 | 2,194 | 4.39% |
+| B | 50,038 | 3,505 | 7.00% |
 
-### Revenue
+### Revenue Analysis
 
-| Variant | Revenue |
-|----------|---------:|
+| Variant | Total Revenue |
+|----------|-------------:|
 | A | ₹18,838,242 |
 | B | ₹30,299,389 |
 
 ### Revenue Per User
 
 | Variant | Revenue Per User |
-|----------|---------:|
+|----------|----------------:|
 | A | ₹377.05 |
 | B | ₹605.53 |
 
@@ -86,56 +107,144 @@ Key success metrics:
 
 ## Funnel Analysis
 
+### Funnel Stage Counts
+
+| Stage | Variant A | Variant B |
+|---------|---------:|---------:|
+| Page Views | 49,962 | 50,038 |
+| Hotel Clicks | 15,895 | 18,472 |
+| Checkout Starts | 7,113 | 9,679 |
+| Bookings | 2,194 | 3,505 |
+
+### Funnel Conversion Rates
+
 | Stage | Variant A | Variant B |
 |---------|---------:|---------:|
 | Click Rate | 31.81% | 36.92% |
 | Checkout Rate | 44.75% | 52.40% |
 | Booking Rate | 30.84% | 36.21% |
 
----
+### Key Insight
 
-## Statistical Testing
+Variant B outperformed Variant A across every stage of the booking funnel.
 
-Result:
-
-- Statistically Significant
-- Null Hypothesis Rejected
-- Variant B Performs Better
+The largest improvement occurred during the checkout stage, indicating reduced friction in the booking experience and improved completion rates.
 
 ---
 
-## Business Insights
+## Statistical Significance Testing
 
-- Conversion Rate increased by 59.45%
-- Revenue increased by 60.84%
-- Revenue Per User increased by 60.59%
-- Largest improvement occurred during Checkout Stage
-- Variant B outperformed Variant A across all funnel stages
+A two-proportion statistical significance test was conducted using Python to validate the experiment results.
+
+### Hypotheses
+
+**Null Hypothesis (H₀):**
+There is no difference between Variant A and Variant B conversion rates.
+
+**Alternative Hypothesis (H₁):**
+Variant B performs differently from Variant A.
+
+### Test Result
+
+- Result is statistically significant.
+- Null Hypothesis Rejected.
+- Variant B performs significantly better than Variant A.
+- p-value < 0.05
+
+This indicates that the observed improvement is unlikely to be due to random chance.
+
+---
+
+## Business Impact
+
+### Conversion Uplift
+
+4.39% → 7.00%
+
+**+59.45% Improvement**
+
+### Revenue Uplift
+
+₹18,838,242 → ₹30,299,389
+
+**+60.84% Improvement**
+
+### Revenue Per User Uplift
+
+₹377.05 → ₹605.53
+
+**+60.59% Improvement**
 
 ---
 
 ## Recommendation
 
-Deploy Variant B as the new booking experience due to higher conversion rates, increased revenue, improved funnel performance, and statistically significant results.
+Based on SQL analysis, funnel performance, revenue impact, and statistical significance testing, Variant B should be deployed as the new booking experience.
+
+Variant B generated:
+
+- Higher conversion rates
+- More bookings
+- Higher revenue
+- Better funnel performance
+- Statistically significant improvements
 
 ---
 
-## Dashboard Preview
+## Tableau Dashboards
 
 ### Executive Summary Dashboard
 
-(Add Screenshot Here)
+- Conversion Rate Comparison
+- Revenue Comparison
+- Revenue Per User Comparison
+- Statistical Significance Summary
+- Business Recommendation
 
-### Funnel Analysis Dashboard
+### Booking Funnel Dashboard
 
-(Add Screenshot Here)
+- Funnel Stage Counts
+- Funnel Conversion Rate Comparison
+- Funnel Performance Insights
+- Variant-Level Analysis
+
+---
+
+## Skills Demonstrated
+
+### SQL
+- KPI Analysis
+- Funnel Analysis
+- Aggregations
+- Business Metrics
+- Experiment Analytics
+
+### A/B Testing
+- Experiment Design
+- Conversion Analysis
+- Hypothesis Testing
+- Statistical Significance Validation
+
+### Tableau
+- Executive Dashboard Design
+- Funnel Visualization
+- Business Reporting
+
+### Analytics
+- Product Analytics
+- Growth Analytics
+- Revenue Analysis
+- Conversion Optimization
+- Data-Driven Decision Making
 
 ---
 
 ## Author
 
-Mayuresh Kore
+**Mayuresh Kore**
 
 B.Tech Computer Science Engineering
 
-Aspiring Data Analyst | Product Analyst
+Aspiring Data Analyst | Product Analyst | Marketing Analyst
+
+Skills: SQL, Python, Tableau, Power BI, Excel, A/B Testing, Data Analytics
